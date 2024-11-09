@@ -1,0 +1,19 @@
+java import
+java.io
+.BufferedReader; import
+java.io
+.BufferedWriter; import
+java.io
+.FileReader; import
+java.io
+.FileWriter; import
+java.io
+.IOException; import java.util.ArrayList; import java.util.Collections; import java.util.List; import java.util.Scanner; public class DataProcessor { public static void main(String[] args) { List data = new ArrayList<>(); // Чтение данных из файла try (BufferedReader reader = new BufferedReader(new FileReader("input.txt"))) { String line; while ((line = reader.readLine()) != null) { data.add(line); } } catch (IOException e) { System.err.println("Ошибка при чтении из файла: " + e.getMessage()); } // Вывод прочитанных данных System.out.println("Данные из файла:"); for (String line : data) { System.out.println(line); } // Сортировка данных Collections.sort(data); // Запись отсортированных данных в новый файл try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) { for (String line : data) { writer.write(line); writer.newLine(); } System.out.println("Данные успешно отсортированы и сохранены в файл 'output.txt'."); } catch (IOException e) { System.err.println("Ошибка при записи в файл: " + e.getMessage()); } // Пример ввода данных пользователем и их сохранения в файл Scanner scanner = new Scanner(
+System.in
+); System.out.println("Введите данные для сохранения в файл:"); String input = scanner.nextLine(); try (BufferedWriter writer = new BufferedWriter(new FileWriter("userInput.txt"))) { writer.write(input); System.out.println("Данные успешно сохранены в файл 'userInput.txt'."); } catch (IOException e) { System.err.println("Ошибка при записи в файл: " + e.getMessage()); } } } 
+Это простой пример программы, которая читает данные из файла 
+input.txt
+, сортирует их, сохраняет отсортированные данные в файл 
+output.txt
+, а также предоставляет возможность пользователю ввести данные для сохранения в файл 
+userInput.txt
